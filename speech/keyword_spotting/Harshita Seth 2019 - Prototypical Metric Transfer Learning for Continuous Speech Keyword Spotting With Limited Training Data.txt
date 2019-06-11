@@ -1,0 +1,35 @@
+Author: Harshita Seth 2019
+Title : Prototypical Metric Transfer Learning for Continuous Speech Keyword Spotting With Limited Training Data
+Area  : Keyword Spotting, Transfer Learning, Few-shot learning, Metric learning, Prototypical networks
+Result: F1 = 0.51, no SNR data
+
+Tech point:
+- Use Transfer learning, few-shot learning and metric learning
+- Tested Honk + DResNet (a PyTorch version of TensorFlow's simple audio recognition demo): https://github.com/castorini/honk
+- Transfer learning by fine tune a public deep ASR model (arxiv.org/abs/1412.5567)
+    pretrained initial feature extraction laypers: Conv x2, GRUx5, Lookahead Conv
+    retrained/post layers: LSTM layers + FC + Softmax, CE loss
+- Combine Prototypical networks loss and metric loss
+    for few-shot learning,
+    retrained/post layers: LSTM layers + Embedding layer + Softmax, 
+    - prototypical loss is used
+        found confusion between keywords is less than that between keywords and background noise
+        analyze : the background data is too big, treat it as only one class is not good
+    - use prototypical loss with metric loss, to keep background datapoints away from each keyword
+
+Target question:
+- detect keywords embedded in converstaions
+
+Data set: 
+- made in house, with 20 keyword (TV model name), 40 speakers, 3 times for each keyword
+- train/validate: 80:20, split on speaker level
+- test: 10x5 minutes trade record, with shopping mall noise in different language
+- preprocessing: 
+    use other pulbic audios with the pure keyword audio to simulate 2 second scenario audio, 
+    time-shift, pitch-shift and intensity variation
+    caching training data, update 30% for each epoch (from Honk by Raphael Tang)
+- Feature extraction:
+    Honk, 20~4kHz, MFCC = 40, 20ms Window, 10 ms overlap
+    Deep ASR model, 20ms window, 10ms overlap, 480 nfft
+
+ps: F1 Score = 2*(Recall * Precision) / (Recall + Precision)

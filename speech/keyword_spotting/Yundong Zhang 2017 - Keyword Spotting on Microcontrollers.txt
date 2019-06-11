@@ -1,0 +1,11 @@
+Title : Hello Edge : Keyword Spotting on Microcontrollers
+Type  : estimate and proposal 
+Area  : Keyword spotting via Deep learning for Microcontroller/Embedded products
+Result: 95% accuracy on 20dB
+
+Author’s main contribution: 
+ - Estimated the well-known solutions
+ - Proposed DS-CNN solution
+Flash point from new leaner(me) side:
+ - Shared a turn-key experiment code/solution, on Tensor flow speech commands and its dataset, which can allow me to start experiment
+ - Code provided: https://github.com/ARM-software/ML-KWS-for-MCU

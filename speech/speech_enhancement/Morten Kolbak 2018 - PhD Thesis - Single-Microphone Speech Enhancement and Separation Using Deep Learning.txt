@@ -1,0 +1,12 @@
+Title: Single-Microphone Speech Enhancement and Separation Using Deep Learning
+Type : PhD Thesis, collection of 7 papers and review of related Areas
+Area : Deep Learning for Speech Enhancement and Separation, single microphone
+
+Author’s main contribution: 
+ - Proposed training techniques: PIT and uPIT
+ - Proposed a STOI inspired cost function for DNNs training
+ - Analyze capability of recent deep learning single microphone speech enhancement/separation algorithms
+
+Flash point from new leaner(me) side:
+ - A good review with new updated reference list, providing the well-known team list.
+ - Focus on training and evaluation part, which can help build a basic demo and learning system.
